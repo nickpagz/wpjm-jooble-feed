@@ -31,6 +31,8 @@ Make sure to replace \"yourdomain.com\" with your actual domain name.
 = Why does my custom feed fail validation when using common online feed validators? =
 Jooble\'s feed requirements do not use standard rss feed elements, so the custom feed will not pass on these validators.
 
+= My feed doesn't work, I see a "Page not Found" error?
+Go to Settings > Permalinks in your WordPress dashboard and click on "Save Permalinks".
 
 == Changelog ==
 
