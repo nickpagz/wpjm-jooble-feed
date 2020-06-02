@@ -41,6 +41,9 @@ echo '<?xml version="1.0" encoding="'.get_option('blog_charset').'"?'.'>';
 		<name><![CDATA[<?php the_title_rss(); ?>]]></name>
 		<region><![CDATA[<?php echo get_the_job_location(); ?>]]></region>
 		
+		<?php //place holder for <salary></salary> field
+		?> 
+		
 		<?php $content = get_the_content_feed( 'rss2' ); ?>
 		<description><![CDATA[<?php echo $content; ?>]]></description>
 		

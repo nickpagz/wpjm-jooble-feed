@@ -36,5 +36,8 @@ Go to Settings > Permalinks in your WordPress dashboard and click on "Save Perma
 
 == Changelog ==
 
+= 1.1 =
+* Added "Salary" field to feed
+
 = 1.0 =
 * Initial plugin release.
