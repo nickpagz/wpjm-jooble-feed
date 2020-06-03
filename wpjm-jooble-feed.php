@@ -1,12 +1,12 @@
 <?php 
 
-/**
-* Plugin Name: 	WPJM Jooble Feed
-* Description: 	Creates a custom rss/xml feed for WP Job Manager compatible with Jooble feed requirements.
-* Version: 1.0
-* Author:	Nick Pagazani
-* Author URI:	https://nickpagazani.com
-* License:	GPL v2 or later
+/*
+Plugin Name: 	WPJM Jooble Feed
+Description: 	Creates a custom rss/xml feed for WP Job Manager compatible with Jooble feed requirements.
+Version: 1.0
+Author:	Nick Pagazani
+Author URI:	https://nickpagazani.com
+License:	GPL v2 or later
 */
 
 function jooble_rss_feed(){
