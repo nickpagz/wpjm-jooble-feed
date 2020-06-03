@@ -4,7 +4,7 @@ Contributors: npagazani
 Tags: WP Job Manager, XML Feed, Jooble
 Tested up to: 5.4.1
 License: GPLv2+
-Stable tag: trunk
+Stable tag: 1.0
 
 Creates a custom rss/xml feed for WP Job Manager compatible with Jooble feed requirements.
 
