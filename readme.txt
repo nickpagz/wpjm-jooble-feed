@@ -2,7 +2,9 @@
 
 Contributors: npagazani
 Tags: WP Job Manager, XML Feed, Jooble
+Requires at least: 4.7
 Tested up to: 5.9.3
+Requires PHP: 7.0
 License: GPLv2+
 Stable tag: 1.0
 
@@ -45,3 +47,8 @@ Go to Settings > Permalinks in your WordPress dashboard and click on "Save Perma
 
 = 1.0 =
 * Initial plugin release.
+
+== Upgrade Notice ==
+
+= 2.0 =
+More efficient code execution, fewer potential conflicts, adjustable size feed.
