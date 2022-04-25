@@ -6,7 +6,7 @@ Requires at least: 4.7
 Tested up to: 5.9.3
 Requires PHP: 7.0
 License: GPLv2+
-Stable tag: 1.0
+Stable tag: 2.0
 
 Creates a custom rss/xml feed for WP Job Manager compatible with Jooble feed requirements.
 
