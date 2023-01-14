@@ -18,4 +18,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 /*
  * Required functions
  */
-require_once plugin_dir_path( __FILE__ ) . 'class-wpjm-jooble-rss-feed.php';
+require_once plugin_dir_path( __FILE__ ) . 'class-wpjm-jooble-feed-settings.php';
