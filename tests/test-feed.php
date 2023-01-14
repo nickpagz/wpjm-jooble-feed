@@ -20,12 +20,14 @@ class FeedTest extends WP_UnitTestCase {
 
 	public function set_up() {
 		parent::set_up();
+		add_option( 'jooble_feed_item_count', 35, '', 'no' );
 		$this->factory = self::factory();
 		$this->jooble_feed = new WPJM_Jooble_Feed();
 	}
 
 	public function tear_down() {
 		parent::tear_down();
+		delete_option( 'jooble_feed_item_count' );
 	}
 
 	protected static function factory() {
@@ -56,7 +58,7 @@ class FeedTest extends WP_UnitTestCase {
 
 	public function test_default_feed_feed_count_setting() {
 		$expected = 35;
-		$actual = get_option( 'jooble_feed_item_count' ); // returns false, I expected the default value with class instantiation.
+		$actual = get_option( 'jooble_feed_item_count' );
 		$this->assertSame( $expected, $actual );
 	}
 
@@ -67,7 +69,7 @@ class FeedTest extends WP_UnitTestCase {
 	}
 
 	public function test_sanitize_count_setting_returns_default_value_on_invalid_entry() {
-		$expected = ''; // I expected the default value with class instantiation, not sure why it comes up empty, related to comment above.
+		$expected = 35;
 		$actual_string = $this->jooble_feed->sanitize_count_setting( 'adc' );
 		$actual_int = $this->jooble_feed->sanitize_count_setting( 300 );
 		$this->assertEquals( $expected, $actual_string );
