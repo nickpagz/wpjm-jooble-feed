@@ -3,10 +3,10 @@
 Contributors: npagazani
 Tags: WP Job Manager, XML Feed, Jooble
 Requires at least: 4.7
-Tested up to: 5.9.3
-Requires PHP: 7.0
+Tested up to: 6.6.2
+Requires PHP: 8.1
 License: GPLv2+
-Stable tag: 2.0
+Stable tag: 2.1
 
 Creates a custom rss/xml feed for WP Job Manager compatible with Jooble feed requirements.
 
@@ -15,7 +15,7 @@ This plugin generates a custom xml job feed that is compatible with Jooble.org's
 WP Job Manager's default job feed uses the standard WordPress RSS feed template which is not compatible with Jooble. This plugin solves that problem.
 The plugin has only one setting - the number of jobs to show in the feed. The minimum value is 1, the maximum is 250. After installing and activating the plugin, you can access the Jooble feed at yourdomain.com/feed/jooble
 
-Note: This plugin requires WP Job Manager to be installed and activated to work properly. 
+Note: This plugin requires WP Job Manager to be installed and activated to work. 
 
 == Installation ==
 An activated install of the WP Job Manager plugin on your site is required for this plugin to work. You can download it here: https://wordpress.org/plugins/wp-job-manager/
@@ -39,6 +39,11 @@ Go to Settings > Permalinks in your WordPress dashboard and click on "Save Perma
 
 == Changelog ==
 
+= 2.1 =
+* Increase feed limit to 3,000 jobs
+* Display the feel url on the settings page
+* Separate settings and output into separate classes
+
 = 2.0 =
 * Use default query instead of "query_posts"
 * Added settings to customize the number of jobs in feed
@@ -50,5 +55,5 @@ Go to Settings > Permalinks in your WordPress dashboard and click on "Save Perma
 
 == Upgrade Notice ==
 
-= 2.0 =
-More efficient code execution, fewer potential conflicts, adjustable size feed.
+= 2.1 =
+Higher feed limit (up to 3,000), display the url on the settings page.
