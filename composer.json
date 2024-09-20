@@ -1,4 +1,7 @@
 {
+    "name": "nickpagz/wpjm-jooble-feed",
+    "description": "Creates a custom rss/xml feed for WP Job Manager compatible with Jooble feed requirements.",
+    "license": "GPL-2.0-or-later",
     "require-dev": {
         "phpunit/phpunit": "^9",
         "yoast/phpunit-polyfills": "^1.0"
