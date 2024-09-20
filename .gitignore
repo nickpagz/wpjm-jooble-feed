@@ -3,3 +3,4 @@
 .phpcs.xml.dist
 .phpunit.result.cache
 .travis.yml
+.vscode

@@ -75,4 +75,53 @@ class FeedTest extends WP_UnitTestCase {
 		$this->assertEquals( $expected, $actual_string );
 		$this->assertEquals( $expected, $actual_int );
 	}
+
+	public function test_for_post_items_in_feed() {
+		$this->factory->post->create_many( 10 );
+		$this->go_to( '/feed' );
+		$this->assertTrue( have_posts() );
+	}
+
+	public function test_for_job_listing_creation() {
+		$job_id = $this->factory->job_listing->create();
+		$job    = get_post( $job_id );
+		$this->assertEquals( 'job_listing', $job->post_type );
+	}
+
+	public function test_for_job_listings_creation() {
+		$job_ids  = $this->factory->job_listing->create_many( 12 );
+		//$feed = $this->go_to( '/feed/jooble' );
+		$all_jobs = get_posts( ['numberposts' => -1, 'fields' => 'ids', 'post_type' => 'job_listing'] );
+		$this->assertCount( 12, $all_jobs );
+	}
+
+	public function test_for_items_in_feed() {
+		//$instance = WPJM_Jooble_Feed_Output::generate_feed();
+		$this->factory->job_listing->create_many( 10 );
+		$wp = new WP_Query();
+		$this->assertEmpty( $wp->query_vars );
+		$wp->query_vars['feed'] = 'jooble';
+		$wp->query_vars['post_type'] = 'job_listing';
+		$wp->query_vars['posts_per_rss'] = 8;
+		$this->assertCount( 3, $wp->query_vars );
+	}
+
+	public function test_jooble_feed_is_not_empty() {
+		$this->factory->job_listing->create_many( 5 );
+		$feed = $this->do_jooble_feed();
+		//$xml  = xml_to_array( $feed );
+		$this->assertEmpty( $feed );
+		// Get all the <item> child elements of the <channel> element.
+		//$items = xml_find( $xml, 'rss', 'channel', 'item' );
+		//$this->assertEquals( 5, count( $items ) );
+	}
+
+	private function do_jooble_feed() {
+		//header_remove();
+		ob_start();
+		WPJM_Jooble_Feed_Output::generate_feed();
+		$out = ob_get_clean();
+		return $out;
+	}
+
 }

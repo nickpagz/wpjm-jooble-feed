@@ -6,32 +6,32 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class WPJM_Jooble_Feed_Output {
 
-    public static function generate_feed() {
+	public static function generate_feed() {
 		add_filter( 'feed_content_type', array( 'WPJM_Jooble_Feed_Output', 'jooble_feed_type' ), 10, 2 );
 		add_action( 'pre_get_posts', array( 'WPJM_Jooble_Feed_Output', 'jooble_jobs_feed' ) );
-        add_action( 'init', array( 'WPJM_Jooble_Feed_Output', 'jooble_custom_rss' ) );
-    }
+		add_action( 'init', array( 'WPJM_Jooble_Feed_Output', 'jooble_custom_rss' ) );
+	}
 
-    public static function jooble_feed_type( $content_type, $type ) {
+	public static function jooble_feed_type( $content_type, $type ) {
 		if ( 'jooble' === $type ) {
 			return feed_content_type( 'rss2' );
 		}
 		return $content_type;
 	}
 
-    public static function jooble_custom_rss() {
+	public static function jooble_custom_rss() {
 		$response = add_feed( 'jooble', array( 'WPJM_Jooble_Feed_Output', 'jooble_feed_output' ) );
 		return $response;
 	}
 
-    public static function jooble_jobs_feed( $query ) {
+	public static function jooble_jobs_feed( $query ) {
 		if ( is_feed( 'jooble' ) && $query->is_main_query() ) {
 			$query->set( 'post_type', 'job_listing' );
 			$query->set( 'posts_per_rss', get_option( 'jooble_feed_item_count' ) );
 		}
 	}
 
-    public static function jooble_feed_output() {
+	public static function jooble_feed_output() {
 		header( 'Content-Type: ' . feed_content_type( 'rss-http' ) . '; charset=' . get_option( 'blog_charset' ), true );
 		echo '<?xml version="1.0" encoding="' . esc_attr( get_option( 'blog_charset' ) ) . '"?' . '>';
 		?>
@@ -52,7 +52,7 @@ class WPJM_Jooble_Feed_Output {
 				the_post();
 				?>
 
-			<job id="<?php echo get_the_ID(); ?>">
+			<job id="<?php echo esc_attr( get_the_ID() ); ?>">
 				<link><![CDATA[<?php the_permalink_rss(); ?>]]></link>
 				<name><![CDATA[<?php the_title_rss(); ?>]]></name>
 				<region><![CDATA[<?php echo esc_attr( get_the_job_location() ); ?>]]></region>

@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class WPJM_Jooble_Feed {
+class WPJM_Jooble_Feed_Settings {
 
 	public function init() {
 
@@ -46,14 +46,16 @@ class WPJM_Jooble_Feed {
 	}
 
 	public function sanitize_count_setting( $input ) {
-		if ( $input < 1 || $input > 250 || ! is_int( $input ) ) {
-			add_settings_error( 'jooble_feed_item_count', 'jooble_feed_settings_error', __( 'Please enter a value between 1 and 250.', 'wpjmjooblefeed' ) );
+		$input = intval( $input );
+		if ( $input < 1 || $input > 3000 ) {
+			add_settings_error( 'jooble_feed_item_count', 'jooble_feed_settings_error', __( 'Please enter a value between 1 and 3000.', 'wpjmjooblefeed' ) );
 			return get_option( 'jooble_feed_item_count' ); // would this be empty on first time activation?
 		}
 		return $input;
 	}
 
-	public function count_setting_html() { ?>
+	public function count_setting_html() {
+		?>
 		<input type="number" name="jooble_feed_item_count" value="<?php echo esc_attr( get_option( 'jooble_feed_item_count' ) ); ?>">
 		<?php
 	}
@@ -69,6 +71,10 @@ class WPJM_Jooble_Feed {
 					submit_button();
 				?>
 			</form>
+			<?php
+				$feed_url = home_url( '/feed/jooble' );
+				echo '<p>' . esc_html__( 'Feed URL:', 'wpjmjooblefeed' ) . ' <a href="' . esc_url( $feed_url ) . '">' . esc_html( $feed_url ) . '</a></p>';
+			?>
 		</div>
 		<?php
 	}
@@ -79,7 +85,7 @@ class WPJM_Jooble_Feed {
 }
 
 // Instantiate our class
-$jooble_feed = new WPJM_Jooble_Feed( __FILE__ );
+$jooble_feed = new WPJM_Jooble_Feed_Settings( __FILE__ );
 $jooble_feed->init();
 require_once plugin_dir_path( __FILE__ ) . 'class-wpjm-jooble-feed-output.php';
 WPJM_Jooble_Feed_Output::generate_feed();
