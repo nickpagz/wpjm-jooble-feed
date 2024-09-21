@@ -6,10 +6,12 @@
 /bin
 /tests
 /node_modules
+/vendor
 
 # Files
 .*
 composer.lock
+composer.json
 package-lock.json
 package.json
 README.md
