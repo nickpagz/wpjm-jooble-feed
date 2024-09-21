@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Zip Folder
-        run: zip -r ${{ github.event.repository.name }}.zip . -x ".git/*" ".github/*" "node_modules/*" "tests/*" ".gitignore" ".editorconfig" ".phpcs.xml" "composer.lock" "package.json" "package-lock.json" ".vscode/*" "bin" "vendor" ".phpcs.xml.dist" ".phpunit.result.cache" ".travis.yml" "phpunit.xml.dist"
+        run: zip -r ${{ github.event.repository.name }}.zip . -x ".git/*" ".github/*" "node_modules/*" "tests/*" ".gitignore" ".distignore" ".editorconfig" ".phpcs.xml" "composer.json" "composer.lock" "package.json" "package-lock.json" ".vscode/*" "bin/*" "vendor" ".phpcs.xml.dist" ".phpunit.result.cache" ".travis.yml" "phpunit.xml.dist"
 
       - name: Release
         uses: softprops/action-gh-release@v1
